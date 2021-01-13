@@ -1,0 +1,101 @@
+<div class="shopping-cart-area mb-130">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 mb-30">
+				<div class="cart-table-container">
+					<table class="cart-table" style="border-right: 0px;border-left: 0px;">
+						<thead>
+							<tr>
+								<th class="product-name" colspan="2">Producto</th>
+								<th class="product-price">Precio</th>
+								<th class="product-quantity">Cantidad</th>
+								<th class="product-subtotal">Total</th>
+								<th class="product-remove">&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let tix of _uw.car;let i = index">
+								<td class="product-thumbnail">
+									<a >
+										<img src="{{tix.images[0]}}"  class="img-fluid" alt="">
+									</a>
+								</td>
+								<td class="product-name">
+									<a >{{tix.productName}}</a>
+								</td>
+
+								<td class="product-price"><span class="price">$ {{tix.finalPrice}}</span></td>
+
+								<td class="product-quantity">
+									<div class="pro-qty d-inline-block mx-0">
+										<input type="text" value="{{tix.cantidad}}">
+									</div>
+								</td>
+
+								<td class="total-price"><span class="price">${{tix.finalPrice * tix.cantidad}}</span></td>
+								<td class="product-remove">
+									<a (click)="remove(i)">
+										<i class="ion-android-close"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-6 mb-20">
+				<div class="cart-coupon-area pb-30">
+					<div class="row align-items-center">
+						<div class="col-lg-12 mb-md-30 mb-sm-30">
+							<div class="Prasi-form coupon-form">
+								<form >
+									<div class="row">
+										<div class="col-md-7 mb-sm-10">
+											<input type="text" placeholder="Ingrese su código de cupón">
+										</div>
+										<div class="col-md-5">
+											<button class="Prasi-button Prasi-button--medium">Aplicar cupon</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-6 text-left text-lg-right">
+						</div>
+					</div>
+				</div>
+				<div class="cart-calculation-area">
+					<h2 class="mb-40">Total</h2>
+					<table class="cart-calculation-table mb-30">
+						<tr>
+							<th>SUBTOTAL</th>
+							<td class="subtotal">${{_uw.subTotal}}</td>
+						</tr>
+						<tr>
+							<th>DESTINO</th>
+						</tr>
+						<tr>
+							<div class="sl-box">
+                                <select class="nice-select2" id="destino" placeholder="Destino" (click)="setEnvio()"[(ngModel)]="destino" [ngModelOptions]="{standalone: true}" required >
+                                  <option  *ngFor="let option of this.localidades ; index as i"  >{{option}}</option>
+                                </select>
+                            </div>
+						</tr>
+						<tr>
+							<th>COSTO POR ENVIO</th>
+							<td class="subtotal">$ {{this.envio}}</td>
+						</tr>
+						<tr>
+							<th>TOTAL</th>
+							<td class="total">$ {{_uw.total}}</td>
+						</tr>
+					</table>
+					<div class="cart-calculation-button text-center">
+						<button class="Prasi-button Prasi-button--medium">Finalizar compra</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	

@@ -1,0 +1,485 @@
+<section>
+    <div class="shop-page-wrapper mt-0 mb-100" >
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12">
+					<div class="shop-product" >
+						<div class="row pb-100">
+							<div class="col-lg-6 mb-md-70 mb-sm-70" *ngIf="tix !== undefined && !this._uw.editingTrek" [hidden]="this._uw.editingTrek">
+								<div class="shop-product__big-image-gallery-wrapper mb-30">
+									<div class="shop-product-rightside-icons">
+										<span class="enlarge-icon">
+											<a class="btn-zoom-popup" data-tippy="Click para ampliar" data-tippy-placement="left" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme = "sharpborder" >
+												<i class="ion-android-expand"></i>
+											</a>
+										</span>
+									</div>
+									<div class="shop-product__big-image-gallery-slider" *ngIf="tix">
+										<div class="single-image" *ngFor="let item of tix.images; index as i" >
+											<img src="{{item}}"  *ngIf="i >= 0"class="img-fluid" alt="">
+										</div>
+										<div class="single-product__floating-badges">
+											<span class="hot" *ngIf="tix.discount">-{{tix.discount}}%</span>
+											<span class="onsale" *ngIf="tix.new">Nuevo</span>
+										</div>
+									</div>
+								</div>
+								<div class="shop-product__small-image-gallery-wrapper">
+									<div class="shop-product__small-image-gallery-slider" *ngIf="tix">
+										<div class="single-image" *ngFor="let item of tix.images; index as i">
+											<img src="{{item}}"  *ngIf="i >= 0" class="img-fluid" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-lg-6" *ngIf="tix !== undefined && !this._uw.editingTrek" [hidden]="this._uw.editingTrek">
+								<div class="Prasi-form login-form--register">
+									<form class="form" [formGroup]="ngFormAddToCar">
+										<div class="shop-product__description" *ngIf="tix">
+											<div class="shop-product__navigation">
+												<a routerLink=""><i class="ion-ios-arrow-thin-left"></i></a>
+											</div>
+											<div class="shop-product__title mb-15">
+												<h2>{{tix.productName}}</h2>
+											</div>
+											<div class="shop-product__price mb-30 " *ngIf="tix.category=='Moccs'">
+												<span class="main-price discounted precioModificado" *ngIf="tix.discount && !tix.price" [hidden]="seted">$ {{tix.sin[0]}}</span>
+											
+												<span  class="discounted-price precioModificado" *ngIf="!tix.discount" [hidden]="seted"> Desde $ {{tix.sin[0]}}</span>
+											
+												<span  class="discounted-price precioModificado" *ngIf="tix.discount" [hidden]="seted"> Desde $ {{tix.sin[0] - (tix.discount * tix.sin[0]/100)}}</span>
+												
+												<span class="main-price discounted precioModificado" *ngIf="tix.discount && tix.price "  [hidden]="seted">$ {{tix.price}}</span >
+											
+												<span  class="discounted-price precioModificado" *ngIf="!tix.discount && tix.price" >$ {{tix.price}}</span>
+												<span class="discounted-price precioModificado" *ngIf="tix.discount && tix.price "  >${{tix.price - (tix.discount * tix.price/100)}}</span >
+											</div>
+
+
+											<div class="shop-product__price mb-30" *ngIf="tix.category!='Moccs'">
+												
+												<span class="main-price discounted precioModificado" *ngIf="tix.discount && tix.price "  >$ {{tix.price}}</span >
+
+												<span class="discounted-price precioModificado" *ngIf="tix.discount && tix.price "  >${{tix.price - (tix.price * tix.discount/100)}}</span >
+												<span class="discounted-price precioModificado" *ngIf="!tix.discount && tix.price "  >$ {{tix.price }}</span >
+											</div>
+
+
+											<div class="shop-product__short-desc mb-50">
+												{{tix.description}}
+											</div>
+											<div class="shop-product__block__value" *ngIf="tix.category=='Moccs'">
+												<div class="shop-product-size-list " >
+													<div class="sl-box">
+														<select class="form-control wide"   id="plants" placeholder="Tipo de planta" [(ngModel)]="plants" [ngModelOptions]="{standalone: true}"
+														
+														required (click)="setPlants(tix)" style="font-size: 2rem;">
+															<option>Sin planta antideslizante</option>
+															<option>Con planta antideslizante</option>	
+														</select>
+													</div>
+												</div>
+											</div>
+										
+										
+											<div class="shop-product__block shop-product__block--size mb-20">
+												<div class="shop-product__block__title">Talla: </div>
+												<div class="shop-product__block__value">
+													<div class="shop-product-size-list" *ngIf="tix">
+														<div *ngFor="let item of tix.tallas; let i=index;">
+															<div  [hidden]="!tix.check[i]" class="row">
+																<!-- <div class="col-md-1 col-xs-6">
+																	<ul class="amenities third"  [hidden]="i!=this.indiceTalla">
+																		<li></li>
+																	</ul>
+																	
+																</div> -->
+																<div class="col-md-12 col-xs-6" >
+																	
+																	<span class="single-size" style="font-size: 16px;" (click)="setSize(tix,i)">{{item}} 
+																	</span>	<i class="fa fa-check"  [hidden]="i!=this.indiceTalla"></i>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										
+											<div class="shop-product__block shop-product__block--color mb-40">
+												<div class="shop-product__block__title">Color: </div>
+												<div class="shop-product__block__value">
+													<div class="shop-product-color-list">
+														{{tix.color}}
+													</div>
+												</div>
+											</div>				
+											
+											<div class="shop-product__block shop-product__block--quantity mb-40" [hidden]="this._uw.isLogged">
+												<div class="shop-product__block__title" >Cantidad: </div>
+												<div class="shop-product__block__value">
+													<div class=" d-inline-block mx-0 pt-0">
+														<input type="number" class="form-control" id="cantidad" formControlName="cantidad" value="1">
+													</div>
+												</div>
+											</div>
+
+											<div class="shop-product__buttons mb-40">
+												<a class="Prasi-button Prasi-button--medium" (click)="add(tix)" [hidden]="this._uw.isLogged">Agregar al carrito </a>
+												<div class="quick-view-other-info pb-0" style="border-top:0px;">
+													<table>
+														<tr class="single-info">
+															<td class="quickview-title">Codigo: </td>
+															<td class="quickview-value">{{tix.codigo}}</td>
+														</tr>
+														<tr class="single-info">
+															<td class="quickview-title">Categoría: </td>
+															<td class="quickview-value">
+																<a >{{tix.category}}</a>
+																
+															</td>
+														</tr>
+														<tr class="single-info">
+															<td class="quickview-title">Modelo: </td>
+															<td class="quickview-value">
+																<a >{{tix.modelo}}</a> 
+																
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="col-lg-4 mb-md-70 mb-sm-70"*ngIf="tix !== undefined" [hidden]="!this._uw.editingTrek">
+								<div class="shop-product__big-image-gallery-wrapper mb-30">
+									<div class="shop-product-rightside-icons">
+										<span class="enlarge-icon">
+											<a class="btn-zoom-popup" data-tippy="Click para ampliar" data-tippy-placement="left" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme = "sharpborder" >
+												<i class="ion-android-expand"></i>
+											</a>
+										</span>
+									</div>
+									<div class="shop-product__big-image-gallery-slider" *ngIf="tix">
+										<div class="single-image" *ngFor="let item of tix.images; index as i" >
+											<img src="{{item}}"  *ngIf="i >= 0"class="img-fluid" alt="">
+										</div>
+										<div class="single-product__floating-badges">
+											<span class="hot" *ngIf="tix.discount">-{{tix.discount}}%</span>
+											<span class="onsale" *ngIf="tix.new">Nuevo</span>
+										</div>
+									</div>
+								</div>
+								<div class="shop-product__small-image-gallery-wrapper">
+									<div class="shop-product__small-image-gallery-slider" *ngIf="tix">
+										<div class="single-image" *ngFor="let item of tix.images; index as i">
+											<img src="{{item}}"  *ngIf="i >= 0" class="img-fluid" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-8 col-xs-12" *ngIf="tix !== undefined" [hidden]="!this._uw.editingTrek"> 
+								<div class="Prasi-form login-form--register checkout-form">
+									<form  class=""[formGroup]="ngFormAddtixs" (ngSubmit) ="sendTix(tix.id)" >
+											
+											<aw-wizard [navBarLayout]="'large-empty-symbols'">
+												<aw-wizard-step stepTitle="">
+													<div class="row" > 
+												
+														<div class="col-md-6 col-xs-12">
+															
+																<div class="form-group">
+																	
+																	<input type="text" class="form-control" id="productName" formControlName="productName" placeholder="Titulo" [(ngModel)]="tix.productName"
+																	[ngClass]="{ 'is-invalid': submitted && fval2.productName.errors }"
+																	required>
+																	<div *ngIf="submitted && fval2.productName.errors" class="invalid-feedback">
+																		<div *ngIf="fval2.productName.errors.required" class="errorLabel">
+																		* El título es un campo requerido.
+																		</div>
+
+																	</div>
+																</div>
+														</div>
+														<div class="col-md-6 col-xs-12">
+															<span class="custom-checkbox"> 
+																<input type="checkbox" id="new" class="form-control" formControlName="new"  [(ngModel)]="tix.new">
+																<label ></label>
+															</span>Nueva Colección
+														</div>
+
+														<div class="col-md-12 col-xs-12">
+															<div class="form-group">
+															
+																<textarea class="form-control height-80" id="description" formControlName="description" placeholder="Descripción" [(ngModel)]="tix.description"
+																[ngClass]="{ 'is-invalid': submitted && fval2.description.errors }"
+																required></textarea>
+																<div *ngIf="submitted && fval2.description.errors" class="invalid-feedback">
+																	<div *ngIf="fval2.description.errors.required" class="errorLabel">
+																	* La descripción es requerida.
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<div class="col-md-6 col-xs-12">
+															<div class="form-group">
+																
+																<input type="text" class="form-control" id="color" formControlName="color" placeholder="Color" [(ngModel)]="tix.color"
+																[ngClass]="{ 'is-invalid': submitted && fval2.color.errors }"
+																required>
+
+
+																<div *ngIf="submitted && fval2.color.errors" class="invalid-feedback">
+																	<div *ngIf="fval2.color.errors.required" class="errorLabel">
+																	* El color es requerido.
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 col-xs-12">
+															<div class="form-group">
+																
+															<input type="text" class="form-control"  id="codigo" formControlName="codigo" placeholder="Codigo" [(ngModel)]="tix.codigo"
+																[ngClass]="{ 'is-invalid': submitted && fval2.codigo.errors }"
+																required>
+
+
+																
+
+																<div *ngIf="submitted && fval2.codigo.errors" class="invalid-feedback">
+																	<div *ngIf="fval2.codigo.errors.required" class="errorLabel">
+																	* El codigo es requerido.
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 col-xs-12">
+															<div class="form-group">
+																
+																	<input type="text" class="form-control"  id="modelo" formControlName="modelo" placeholder="Modelo" [(ngModel)]="tix.modelo"
+																[ngClass]="{ 'is-invalid': submitted && fval2.modelo.errors }"
+																required>
+
+
+
+															
+
+																<div *ngIf="submitted && fval2.modelo.errors" class="invalid-feedback">
+																	<div *ngIf="fval2.modelo.errors.required" class="errorLabel">
+																	* El modelo es requerido.
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 col-xs-12">
+															<label style="text-transform: lowercase;">Categoría</label>
+															
+																<select (click)="setCategory()" id="category" formControlName="category" [(ngModel)]="tix.category"
+																[ngClass]="{ 'is-invalid': submitted && fval2.category.errors }"
+																required   >
+																	<option>Botas y botines</option>
+																	<option>Moccs</option>
+																	<option>Zapatos</option>
+																</select>
+															
+															<div *ngIf="submitted && fval2.category.errors" class="invalid-feedback">
+																	<div *ngIf="fval2.category.errors.required" class="errorLabel">
+																	* La categoria es requerida
+																	</div>
+																</div>
+														</div>	
+													</div>								
+													<button type="button" awNextStep>Sig.</button>
+												  </aw-wizard-step>
+
+												  <aw-wizard-step awOptionalStep stepTitle="">
+												     <div class="row" > 	
+														<div class="col-md-4"  *ngIf="this._uw.botas" [hidden]="!this._uw.botas">
+															<label >Tallas disponibles</label>
+															<ul >
+																<li *ngFor="let talla of tallasBotas; index as i" >
+																	<span class="custom-checkbox"> 
+																		
+ 
+																			<input type="checkbox" id="{{check}}{{i}}" [(ngModel)]="checks[i]" [ngModelOptions]="{standalone: true}">
+																		
+																		<label for="i+1"></label>
+																	</span>{{talla}}
+																</li>
+															</ul>	
+														</div>
+														<div *ngIf="this.tix && this._uw.moccs" [hidden]="!this._uw.moccs">
+															<div *ngFor="let talla of tallasMoccs; index as i" >
+																<div class="col-md-6" *ngIf="i==0" >
+																	<label >Tallas disponibles</label>
+																</div>
+																<div class="col-md-3" *ngIf="i==0" >
+																	<label >Precio sin antideslizante</label>
+																</div>
+																<div class="col-md-3" *ngIf="i==0" >
+																	<label >Precio con antideslizante</label>
+																</div>
+																<div class="col-md-6" >
+																	<span class="custom-checkbox"> 
+																			<input type="checkbox" id="{{check}}{{i}}" [(ngModel)]="checks[i]" [ngModelOptions]="{standalone: true}">
+																			<label for="i+1"></label>
+																		</span>{{talla}}
+																</div>
+																<div class="col-md-3">
+																	<input type="text" class="form-control col-md-6" id="{{precio}}{{i}}" placeholder="0"  [(ngModel)]="sin[i]" [ngModelOptions]="{standalone: true}" [disabled]="!checks[i]"> 
+																	<label for="i+1"></label>
+																</div>
+																<div class="col-md-3">
+																	<input type="text" class="form-control col-md-6" id="{{precio2}}{{i}}" placeholder="0" [(ngModel)]="con[i]" [ngModelOptions]="{standalone: true}" [disabled]="!checks[i]">
+																	<label for="i+1"></label>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-4"  *ngIf=" this._uw.zapatos" [hidden]="!this._uw.zapatos">
+															<label>Tallas disponibles</label>
+															<ul >
+																<li *ngFor="let talla of tallasZapatos; index as i" >
+																	<span class="custom-checkbox"> 
+																		<input type="checkbox" id="{{check}}{{i}}" [(ngModel)]="checks[i]" [ngModelOptions]="{standalone: true}">
+																		<label for="i+1"></label>
+																	</span>{{talla}}
+																</li>
+															</ul>		
+														</div>
+														<div class="col-md-3 col-xs-12"  [hidden]="this._uw.moccs" >
+															<div class="form-group">
+																<label for="globalPrice">Precio</label>
+																<input type="text" class="form-control" id="globalPrice" formControlName="globalPrice" 
+																placeholder="Precio" [(ngModel)]="tix.globalPrice"
+																	[ngClass]="{ 'is-invalid': submitted && fval2.globalPrice.errors }"
+																	required
+																>
+
+
+															</div>
+														</div>	
+														<div class="col-md-12 col-xs-12">
+															<div class="form-group">
+															
+															
+
+																<textarea class="form-control height-80" id="notes"  placeholder="Información extra" [(ngModel)]="tix.notes" [ngModelOptions]="{standalone: true}"
+																></textarea>
+
+															
+															</div>
+														</div>	
+													</div>
+
+												    <button type="button" awPreviousStep>Ant.</button>
+												    <button type="button"  type="submit"  awNextStep>Sig.</button>
+												  </aw-wizard-step>
+												 
+												  <aw-wizard-step stepTitle="">
+												    <div class="row">
+
+												    	<div class="col-md-12 text-center" *ngIf="this._uw.errorFormAddtixs">
+															<i class="ti-thumb-down cl-danger font-50"></i>
+															<h3 class="cl-danger">Error!</h3>
+															
+
+																<div *ngIf="submitted && fval2.productName.errors" class="invalid-feedback">
+																		<div *ngIf="fval2.productName.errors.required" class="errorLabel">
+																		* El título es requerido
+																		</div>
+
+																</div>
+
+																<div *ngIf="submitted && fval2.description.errors" class="invalid-feedback">
+																	<div *ngIf="fval2.description.errors.required" class="errorLabel">
+																	* La descripción es requerida 
+																	</div>
+
+																</div>
+
+															
+
+
+																<div *ngIf="submitted && fval2.category.errors" class="invalid-feedback">
+																	<div *ngIf="fval2.category.errors.required" class="errorLabel">
+																	* La categoría es reqùerida
+																	</div>
+
+																</div>								
+															
+														</div>
+
+
+														<div class="col-md-12 text-center" *ngIf="!this._uw.errorFormAddtixs">
+															<i class="ti-thumb-up cl-success font-50"></i>
+															<h3 class="cl-success">Felicitaciones!</h3>
+															<p><strong></strong> El producto fue editado con éxito!</p>
+														</div>
+													</div>
+												    <button type="button" awPreviousStep>Ant.</button>
+												    <button type="button" (click)="finish(tix.id)">Guardar</button>
+												  </aw-wizard-step>
+											</aw-wizard>
+									</form>							
+								</div>	
+							</div>	
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</section>
+	<div class="overlay-navigation-menu overlay-navigation-inactive" id="overlay-navigation-menu">
+	   	<span class="close-icon overlay-menu-close-icon">
+	        <a href="javascript:void(0)" id="overlay-menu-close-icon">
+	            <i class="ti-close"></i>
+	        </a>
+	    </span>
+	  Hello
+
+
+	</div>
+	
+	<div class="wishlist-overlay" id="wishlist-overlay">
+		<div class="wishlist-overlay-close inactive"></div>
+		<div class="wishlist-overlay-content">
+	
+			<span class="close-icon" id="wishlist-close-icon">
+				<a href="javascript:void(0)">
+					<i class="ion-android-close"></i>
+				</a>
+			</span>
+			
+			
+			
+			<div class="offcanvas-cart-content-container">
+				<h3 class="cart-title">Alerta</h3>
+
+				<div class="cart-product-wrapper">
+					<div class="cart-product-container  ps-scroll">
+						Seguro que desea borrar este producto?
+					
+					</div>
+
+					<!--=======  cart buttons  =======-->
+					
+					<div class="cart-buttons">
+						<a (click)="setDeleted()">Si, deseo borralo</a>
+					</div>
+					
+					<!--=======  End of cart buttons  =======-->
+				</div>
+			</div>
+			
+			<!--=======  End of offcanvas wishlist content container   =======-->
+		</div>
+	</div>

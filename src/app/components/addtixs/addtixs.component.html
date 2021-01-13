@@ -1,0 +1,229 @@
+<section class="white-bg padd-0 mrg-top-0  mb-80  " style="min-height: 600px; padding-top: 0px;">
+	<div class="container-fluid" >
+		<div class="">
+			<div class="">
+				<div class=" mrg-0 mrg-top-0">
+					<div class="">
+						<div class="tr-single-header" style="border: 0px;">
+							<h3 class="dashboard-title">									
+								+Agregar Producto. 		
+							</h3>
+						</div>
+						<div class="mrg-top-30 "  >
+							<div class="col-md-3 col-xs-12" style="
+								padding: 15px 15px 15px 15px; background:#fff!important; border-radius: 10px;">
+								<ngx-file-picker
+								    [uploadType]="'multi'"
+								    (validationError)= "onValidationError($event)"
+								    [adapter]="adapter"
+								    [fileExtensions]="['pdf', 'jpeg','jpg', 'png', 'PNG', 'mp4', 'css', 'docx', 'txt','webp']"
+								    (uploadSuccess)="onUploadSuccess($event)"
+								    (removeSuccess)="onRemoveSuccess($event)"
+								    [showeDragDropZone]="true"
+								    [showPreviewContainer]="true"
+								    [accept]="'image/*'"
+								    (fileAdded)="onFileAdded($event)">
+								</ngx-file-picker>									
+							</div>
+							<div class="col-md-9 col-xs-12">
+								<div class="Prasi-form login-form--register checkout-form">
+									<form  class=""[formGroup]="ngFormAddtixs" (ngSubmit) ="sendTix()" >
+										<aw-wizard [navBarLayout]="'large-empty-symbols'">
+											<aw-wizard-step stepTitle="">
+												<div class="row" > 
+													<div class="col-md-6 col-xs-12">
+														<div class="form-group">
+															<input type="text" class="form-control" id="productName" formControlName="productName" placeholder="Titulo" [(ngModel)]="tix.productName"
+															[ngClass]="{ 'is-invalid': submitted && fval.productName.errors }"
+															required><span class="required"></span>
+															<div *ngIf="submitted && fval.productName.errors" class="invalid-feedback">
+																<div *ngIf="fval.productName.errors.required" class="errorLabel">
+																* El título es un campo requerido.
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6 col-xs-12">
+															<span class="custom-checkbox"> 
+																<input type="checkbox" id="new" class="form-control" formControlName="new"  [(ngModel)]="tix.new">
+																<label ></label>
+															</span>Nueva Colección
+														</div>
+													<div class="col-md-12 col-xs-12">
+														<div class="form-group">
+															<textarea class="form-control height-80" id="description" formControlName="description" placeholder="Descripción" [(ngModel)]="tix.description"
+															[ngClass]="{ 'is-invalid': submitted && fval.description.errors }"
+															required></textarea>
+															<div *ngIf="submitted && fval.description.errors" class="invalid-feedback">
+																<div *ngIf="fval.description.errors.required" class="errorLabel">
+																* La descripción es requerida.
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6 col-xs-12">
+														<div class="form-group">
+															<input type="text" class="form-control" id="color" formControlName="color" placeholder="Color" [(ngModel)]="tix.color"
+															[ngClass]="{ 'is-invalid': submitted && fval.color.errors }"
+															required>
+															<div *ngIf="submitted && fval.color.errors" class="invalid-feedback">
+																<div *ngIf="fval.color.errors.required" class="errorLabel">
+																* El color es requerido.
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3 col-xs-12">
+														<div class="form-group">
+															<input type="text" class="form-control"  id="codigo" formControlName="codigo" placeholder="Codigo" [(ngModel)]="tix.codigo"
+															[ngClass]="{ 'is-invalid': submitted && fval.codigo.errors }"
+															required>
+															<div *ngIf="submitted && fval.codigo.errors" class="invalid-feedback">
+																<div *ngIf="fval.codigo.errors.required" class="errorLabel">
+																* El codigo es requerido.
+																</div>
+
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3 col-xs-12">
+														<div class="form-group">
+																<input type="text" class="form-control"  id="modelo" formControlName="modelo" placeholder="Modelo" [(ngModel)]="tix.modelo"
+															[ngClass]="{ 'is-invalid': submitted && fval.modelo.errors }"
+															required>
+															<div *ngIf="submitted && fval.modelo.errors" class="invalid-feedback">
+																<div *ngIf="fval.modelo.errors.required" class="errorLabel">
+																* El modelo es requerido.
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-3 col-xs-12">
+														<label style="text-transform: lowercase;">Categoría</label>
+														<select    id="category" formControlName="category" [(ngModel)]="tix.category"
+														[ngClass]="{ 'is-invalid': submitted && fval.category.errors }"
+														required (click)="setType()" class="nice-select" >
+															<option>Botas y botines</option>
+															<option>Moccs</option>
+															<option>Zapatos</option>
+														</select>
+														<div *ngIf="submitted && fval.category.errors" class="invalid-feedback">
+															<div *ngIf="fval.category.errors.required" class="errorLabel">
+															* La categoria es requerida
+															</div>
+														</div>
+													</div>
+												</div>								
+												<button type="button" awNextStep>Sig.</button>
+											  </aw-wizard-step>
+
+											  <aw-wizard-step awOptionalStep stepTitle="">
+											     <div class="row" > 	
+													<div class="col-md-4"  *ngIf="this._uw.botas" [hidden]="!this._uw.botas">
+														<label >Tallas disponibles</label>
+														<ul >
+															<li *ngFor="let talla of tallasBotas; index as i" >
+																<span class="custom-checkbox"> 
+																	<input type="checkbox" id="{{check}}{{i}}" [(ngModel)]="checks[i]" [ngModelOptions]="{standalone: true}">
+																	<label for="i+1"></label>
+																</span>{{talla}}
+															</li>
+														</ul>	
+													</div>
+													<div *ngIf="this.tix && this._uw.moccs" [hidden]="!this._uw.moccs">
+														<div *ngFor="let talla of tallasMoccs; index as i" >
+															<div class="col-md-4" *ngIf="i==0" >
+																<label >Tallas disponibles</label>
+															</div>
+															<div class="col-md-3" *ngIf="i==0" >
+																<label >Precio sin antideslizante</label>
+															</div>
+															<div class="col-md-3" *ngIf="i==0" >
+																<label >Precio con antideslizante</label>
+															</div>
+															<div class="col-md-4" >
+																<span class="custom-checkbox"> 
+																	<input type="checkbox" id="{{check}}{{i}}" [(ngModel)]="checks[i]" [ngModelOptions]="{standalone: true}">
+																	<label for="i+1"></label>
+																</span>{{talla}}
+															</div>
+															<div class="col-md-3">
+																<input type="text" class="form-control col-md-6" id="{{precio}}{{i}}" placeholder="0"  [(ngModel)]="sin[i]" [ngModelOptions]="{standalone: true}" [disabled]="!checks[i]"> 
+																<label for="i+1"></label>
+															</div>
+															<div class="col-md-3">
+																<input type="text" class="form-control col-md-6" id="{{precio2}}{{i}}" placeholder="0" [(ngModel)]="con[i]" [ngModelOptions]="{standalone: true}" [disabled]="!checks[i]">
+																<label for="i+1"></label>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-4"  *ngIf=" this._uw.zapatos" [hidden]="!this._uw.zapatos">
+														<label>Tallas disponibles</label>
+														<ul >
+															<li *ngFor="let talla of tallasZapatos; index as i" >
+																<span class="custom-checkbox"> 
+																	<input type="checkbox" id="{{check}}{{i}}" [(ngModel)]="checks[i]" [ngModelOptions]="{standalone: true}">
+																	<label for="i+1"></label>
+																</span>{{talla}}
+															</li>
+														</ul>		
+													</div>
+													<div class="col-md-3 col-xs-12"  [hidden]="this._uw.moccs" >
+														<div class="form-group">
+															<label for="globalPrice">Precio</label>
+															<input type="text" class="form-control" id="globalPrice" formControlName="globalPrice" 
+															placeholder="Precio" 
+															>
+														</div>
+													</div>	
+													<div class="col-md-12 col-xs-12">
+														<div class="form-group">
+															<textarea class="form-control height-80" id="notes"  placeholder="Información extra" [(ngModel)]="tix.notes" [ngModelOptions]="{standalone: true}"
+															></textarea>
+														</div>
+													</div>	
+												</div>
+											    <button type="button" awPreviousStep>Ant.</button>
+											    <button type="button"  type="submit"  awNextStep>Sig.</button>
+											  </aw-wizard-step>
+											  <aw-wizard-step stepTitle="">
+											    <div class="row">
+											    	<div class="col-md-12 text-center" *ngIf="this._uw.errorFormAddtixs">
+														<i class="ti-thumb-down cl-danger font-50"></i>
+														<h3 class="cl-danger">Error!</h3>
+															<div *ngIf="submitted && fval.productName.errors" class="invalid-feedback">
+																	<div *ngIf="fval.productName.errors.required" class="errorLabel">
+																	* El título es requerido
+																	</div>
+															</div>
+															<div *ngIf="submitted && fval.description.errors" class="invalid-feedback">
+																<div *ngIf="fval.description.errors.required" class="errorLabel">
+																* La descripción es requerida 
+																</div>
+															</div>
+															<div *ngIf="submitted && fval.category.errors" class="invalid-feedback">
+																<div *ngIf="fval.category.errors.required" class="errorLabel">
+																* La categoría es reqùerida
+																</div>
+															</div>	
+													</div>
+													<div class="col-md-12 text-center" *ngIf="!this._uw.errorFormAddtixs">
+														<i class="ti-thumb-up cl-success font-50"></i>
+														<h3 class="cl-success">Felicitaciones!</h3>
+														<p><strong></strong> Se ha agregado un nuevo producto a su tienda!</p>
+													</div>
+												</div>
+											    <button type="button" awPreviousStep>Ant.</button>
+											    <button type="button" (click)="finish()">Guardar</button>
+											</aw-wizard-step>
+										</aw-wizard>
+									</form>							
+								</div>	
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

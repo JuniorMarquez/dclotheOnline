@@ -1,0 +1,126 @@
+<section>
+    <div class="shop-page-wrapper mt-0 mb-100" >
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-12">
+					<div class="shop-product" >
+						<div class="row pb-100">
+							<div class="col-lg-3 mb-md-70 mb-sm-70" *ngIf="tix !== undefined && this._uw.editingTrek" >
+								<div class="shop-product__navigation">
+									<a routerLink=""><i class="ion-ios-arrow-thin-left"></i></a>
+								</div>
+								<div class="shop-product__title mb-15">
+									<h2>{{tix.productName}}</h2>
+								</div>
+								<div class="shop-product__big-image-gallery-wrapper mb-30">
+									<div class="shop-product-rightside-icons">
+										<span class="enlarge-icon">
+											<a class="btn-zoom-popup" data-tippy="Click para ampliar" data-tippy-placement="left" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme = "sharpborder" >
+												<i class="ion-android-expand"></i>
+											</a>
+										</span>
+									</div>
+									<div class="shop-product__big-image-gallery-slider" *ngIf="tix">
+										<div class="single-image" *ngFor="let item of tix.images; index as i" >
+											<img src="{{item}}"  *ngIf="i >= 0"class="img-fluid" alt="">
+										</div>
+										<div class="single-product__floating-badges">
+											<span class="hot" *ngIf="tix.discount">-{{tix.discount}}%</span>
+											<span class="onsale" *ngIf="tix.new">Nuevo</span>
+										</div>
+									</div>
+								</div>
+								<div class="shop-product__small-image-gallery-wrapper">
+									<div class="shop-product__small-image-gallery-slider" *ngIf="tix">
+										<div class="single-image" *ngFor="let item of tix.images; index as i">
+											<img src="{{item}}"  *ngIf="i >= 0" class="img-fluid" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-9 md-70 mb-sm-70" *ngIf="tix !== undefined && this._uw.editingTrek" >
+								<div class="Prasi-form login-form--register">
+									<form class="form" [formGroup]="ngSetDiscount">
+										<div class="shop-product__block shop-product__block--quantity mb-40">
+											<div class="shop-product__block__title" >Descuento(%) : </div>
+											<div class="shop-product__block__value">
+												<div class=" d-inline-block mx-0 pt-0">
+													<input type="number" class="form-control" id="discount" formControlName="discount" value="0" min="0" max="100">
+												</div>
+											</div>
+										</div>
+										<div class="shop-product__buttons mb-40">
+											<a class="Prasi-button Prasi-button--medium"(click)="setDiscount()">Aplicar descuento</a>
+										</div>
+									</form>
+								</div>
+								<div class="shop-product__price mb-30" *ngIf="tix.category=='Moccs'">
+									<div *ngFor="let talla of tallasMoccs; index as i" >
+										<div class="col-md-4" *ngIf="i==0" >
+											<label >Talla</label>
+										</div>
+										<div class="col-md-4" *ngIf="i==0" >
+											<label >Precio sin antideslizante</label>
+										</div>
+										<div class="col-md-4" *ngIf="i==0" >
+											<label >Precio con antideslizante</label>
+										</div>
+										<div class="col-md-4" >
+											{{talla}}
+										</div>
+										<div class="col-md-4" *ngIf="this.ngSetDiscount.value.discount">
+											<span class="main-price discounted precioModificado" >$ {{tix.sin[i]}}</span >
+											<span class="discounted-price precioModificado" >${{tix.sin[i] - (tix.sin[i] * this.ngSetDiscount.value.discount/100)}}</span >
+											<span class="discounted-price precioModificado"  [hidden]="this.ngSetDiscount.value.discount">$ {{tix.sin[i] }}</span >
+										</div>
+										<div class="col-md-4" [hidden]="this.ngSetDiscount.value.discount">
+											{{tix.sin[i]}}
+										</div>
+										<div class="col-md-4"  *ngIf="this.ngSetDiscount.value.discount">
+											<span class="main-price discounted precioModificado" >$ {{tix.con[i]}}</span >
+											<span class="discounted-price precioModificado" >${{tix.con[i] - (tix.con[i] * this.ngSetDiscount.value.discount/100)}}</span >
+											<span class="discounted-price precioModificado" [hidden]="this.ngSetDiscount.value.discount">$ {{tix.con[i] }}</span >
+										</div>
+										<div class="col-md-4"  [hidden]="this.ngSetDiscount.value.discount">
+											{{tix.con[i]}}
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</section>
+	<div class="overlay-navigation-menu overlay-navigation-inactive" id="overlay-navigation-menu">
+	   	<span class="close-icon overlay-menu-close-icon">
+	        <a href="javascript:void(0)" id="overlay-menu-close-icon">
+	            <i class="ti-close"></i>
+	        </a>
+	    </span>
+	  Hello
+	</div>
+	<div class="wishlist-overlay" id="wishlist-overlay">
+		<div class="wishlist-overlay-close inactive"></div>
+		<div class="wishlist-overlay-content">
+			<span class="close-icon" id="wishlist-close-icon">
+				<a href="javascript:void(0)">
+					<i class="ion-android-close"></i>
+				</a>
+			</span>
+			<div class="offcanvas-cart-content-container">
+				<h3 class="cart-title">Alerta</h3>
+				<div class="cart-product-wrapper">
+					<div class="cart-product-container  ps-scroll">
+						Seguro que desea borrar este producto?
+					</div>
+					<div class="cart-buttons">
+						<a (click)="setDeleted()">Si, deseo borrarlo</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

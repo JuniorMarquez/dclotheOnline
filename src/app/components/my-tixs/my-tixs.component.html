@@ -1,0 +1,77 @@
+<main>
+	<section class="dashboard  padd-0 mrg-top-0">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-9 " *ngIf="this._uw.admin">
+					<div class="row mrg-0 mrg-top-0">
+						<div class="tr-single-header" style="border-bottom: 0px;">
+							<h3 class="dashboard-title">Mi tienda ...</h3>
+						</div>
+						<div class="tr-single-body">							
+							<div class="row">
+								<div class="col-md-6 col-sm-6">								
+									<div class="col-md-6 col-sm-6">
+									<a routerLink="prasicatalog" data-tippy-theme = "sharpborder" data-tippy="Administrar" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true">
+										<div class="widget simple-widget" >
+											<div class="widget-caption danger">
+												<div class="row">
+													<div class="col-xs-4 padd-r-0">
+														<i class="cl-success icon ti-package"></i>
+														</div>
+													<div class="col-xs-8">
+													<div class="widget-detail">
+														<h3 *ngIf="tixs">{{_uw.totalTixs}} </h3>
+														<span> Productos</span>
+													</div>
+													</div>
+													<div class="col-xs-12">
+														<div class="widget-line">
+															<span style="width:100%;" class="bg-success widget-horigental-line"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</a>
+									</div>
+								
+										
+									<div class="col-md-6 col-sm-6">
+										<a routerLink="prasicatalog" data-tippy-theme = "sharpborder" data-tippy="Ver historial" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true">
+											<div class="widget simple-widget">
+												<div class="widget-caption warning">
+													<div class="row">
+														<div class="col-xs-4 padd-r-0">
+															<i class="cl-warning icon  ti-shopping-cart-full"></i>
+														</div>
+														<div class="col-xs-8">
+															<div class="widget-detail">
+																<h3 *ngIf="books">{{_uw.totalBooks}} </h3>
+																<h3 *ngIf="!books">0 </h3><!-- 
+																<h3 *ngIf="books">total books</h3>
+	 -->															<span>Nuevas ventas</span>
+															</div>
+														</div>
+														<div class="col-xs-12">
+															<div class="widget-line">
+																<span style="width:60%;" class="bg-warning widget-horigental-line"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</a>
+									</div>							
+								</div>
+							</div>
+		
+							<div class="row">					
+							</div>							
+						</div>
+					</div>
+				</div>		
+			</div>
+		</div>
+	</section>
+</main>		
+		<!-- ======================= End dashboadr admin ===================== -->

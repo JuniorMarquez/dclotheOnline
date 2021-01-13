@@ -1,0 +1,51 @@
+<div class="login-area mb-130 mb-md-70 mb-sm-70 mb-xs-70 mb-xxs-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 mb-md-50 mb-sm-50">
+					<div class="Prasi-form login-form">
+						<form form class="form"[formGroup]="ngFormLogin" (ngSubmit) ="onLogin()" >
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="section-title section-title--login text-center mb-50">
+										<h2 class="mb-20">Administremos prasi</h2>
+										<p>Bienvenido!</p>
+									</div>
+								</div>
+								<div class="alert alert-danger" role="alert"*ngIf="isError">
+									Something is wrong!
+								</div>
+								<div class="form-group col-lg-12">
+									<label for="inputEmail" style="color:black;">Email</label>
+									<input type="email" class="form-control" id="email" placeholder="Email" formControlName="email" [(ngModel)]="user.email"required [ngClass]="{ 'is-invalid': submitted && fval.email.errors }">
+											<div *ngIf="submitted && fval.email.errors" class="invalid-feedback">
+											<div *ngIf="fval.email.errors.required">Email is required</div>
+									<div *ngIf="fval.email.errors.email">Enter a valid email address</div>
+									</div>
+								</div>
+								<div class="form-group col-lg-12">
+									<label for="inputEmail" style="color:black;">Password</label>
+									<input type="password" class="form-control" id="password" placeholder="*******" formControlName="password" [(ngModel)]="user.password" [ngClass]="{ 'is-invalid': submitted && fval.password.errors}"  required>
+									<div *ngIf="submitted && fval.password.errors"class="invalid-feedback">
+											<div ngClass="fval.password.errors.required">
+											Password is required.
+											</div>
+
+										</div>
+
+								</div>
+								<div class="col-lg-12 text-center mb-30">
+									<button type="submit" class="Prasi-button Prasi-button--medium">entrar</button>
+								</div>
+
+								<div class="col-lg-12">
+									<input type="checkbox"> <span class="remember-text">Recordarme</span>
+									<a href="shop-customer-login.html#" class="reset-pass-link">Olvidó su contraseña?</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>

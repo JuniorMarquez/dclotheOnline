@@ -1,0 +1,188 @@
+  <!--=============================================
+    =            Header overlay menu         =
+    =============================================-->
+    
+    <header class="header header-nontransparent-overlay-menu static-header header-sticky">
+        
+        <!--=======  header bottom  =======-->
+        
+        <div class="header-bottom pt-40 pb-40">
+            <div class="container wide">
+
+                    <!--=======  header bottom container  =======-->
+                    
+                    <div class="header-bottom-container">
+                        
+                        <!--=======  logo with off canvas  =======-->
+                        
+                        <div class="logo-with-offcanvas d-flex">
+    
+                            <!--=======  overlay menu icon  =======-->
+                            
+                            <div class="overlay-menu-icon mr-20 d-none d-lg-block">
+                                <a href="javascript:void(0)" id="overlay-menu-icon">
+                                    <i class="ion-navicon"></i>
+                                </a>
+                            </div>
+                            
+                            <!--=======  End of overlay menu icon  =======-->
+        
+                            
+                        </div>
+                        
+                        <!--=======  End of logo with off canvas  =======-->
+    
+                          <!--=======  header bottom navigation  =======-->
+                        
+                        <div class="header-bottom-navigation">
+                            <div class="site-main-nav d-none d-lg-block">
+                                <nav class="site-nav center-menu">
+                                    <ul>
+                                        <li class="menu-item-has-children"><a routerLink="prasifilter">Shop</a>
+                                            
+                                        </li>
+                                        <li class="menu-item-has-children"><a routerLink="blog">Blog</a>
+                                            
+                                        </li>
+                                    
+
+                                    
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        
+                        <!--=======  End of header bottom navigation  =======-->
+
+                        <!--=======  logo   =======-->
+                            
+                        <div class="logo">
+                            <a routerLink="">
+                                <img src="assets/assetsprasi/images/logo.png" class="img-fluid"  alt="">
+                            </a>
+                        </div>
+                        
+                        <!--=======  End of logo   =======-->
+
+                        <!--=======  headeer right container  =======-->
+                        
+                        <div class="header-right-container">
+
+                            <!--=======  header right icons  =======-->
+                            
+                            <div class="header-right-icons d-flex justify-content-end align-items-center h-100">
+                                <!--=======  single-icon  =======-->
+                                
+                            
+                                <!--=======  End of single-icon  =======-->
+                                <!--=======  single-icon  =======-->
+                                
+                               
+                                
+                                <!--=======  End of single-icon  =======-->
+                                <!--=======  single-icon  =======-->
+                                
+                                
+                                
+                                <!--=======  End of single-icon  =======-->
+                                <!--=======  single-icon  =======-->
+                                
+                               <div class="single-icon cart" [hidden]="_uw.numProd<1 || this._uw.admin">
+                                    <a href="javascript:void(0)" id="offcanvas-cart-icon">
+                                        <i class="ion-ios-cart"></i>
+                                        <span class="count">{{_uw.numProd}}</span>
+                                    </a>
+                                </div>
+                                <!--=======  End of single-icon  =======-->
+                            </div>
+                            <!--=======  End of header right icons  =======-->
+        
+                        </div>
+                        
+                        <!--=======  End of headeer right container  =======-->
+                        
+                        
+                    </div>
+                    
+                    <!--=======  End of header bottom container  =======-->
+                     <!-- Mobile Navigation Start Here -->
+
+                     <div class="site-mobile-navigation d-block d-lg-none">
+                        <div id="dl-menu" class="dl-menuwrapper site-mobile-nav">
+                            <!--Site Mobile Menu Toggle Start-->
+                            <button class="dl-trigger hamburger hamburger--spin">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button><!--Site Mobile Menu Toggle End-->
+                            <ul class="dl-menu dl-menu-toggle">
+                                  <li class=""><a routerLink="prasifilter">Shop</a>
+                                    
+                                </li>
+                                <li class=""><a routerLink="blog">Blog</a>
+                                    
+                                </li>
+                                <!--   <li class=""><a href="index-instagram.html#">Enlace</a>
+                                    
+                                </li>
+                                  <li class=""><a href="index-instagram.html#">Enlace</a>
+                                    
+                                </li> -->
+
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Mobile Navigation End Here -->
+                        
+            </div>
+        </div>
+    
+        <!--=======  End of header bottom  =======-->
+    </header>
+    
+    <!--===== End of Header overlay menu ======-->
+
+
+   <!--=======  overlay-navigation-menu  =======-->
+
+   <div class="overlay-navigation-menu overlay-navigation-inactive" id="overlay-navigation-menu">
+        <!--=======  close icon  =======-->
+        
+        <span class="close-icon overlay-menu-close-icon">
+            <a href="javascript:void(0)" id="overlay-menu-close-icon">
+                <i class="ti-close"></i>
+            </a>
+        </span>
+        
+        <!--=======  End of close icon  =======-->
+   <!--=======  overlay navigation menu  =======-->
+        
+        <div class="overlay-navigation-menu-container">
+                <nav>
+                    <ul id="vertical-collapsible-menu">
+                        <li class="has-children">
+                            <a routerLink="prasifilter">Shop</a>
+                           
+                        </li>
+                        <li class="has-children">
+                            <a routerLink="blog">Blog</a>
+                           
+                        </li>
+                      <!--   <li class="has-children">
+                            <a href="index.html#">enlace</a>
+                           
+                        </li>
+                        <li class="has-children">
+                            <a href="index.html#">enlace</a>
+                           
+                        </li> -->
+                       
+                    </ul>
+                </nav>
+        </div>
+        
+        <!--=======  End of overlay navigation menu  =======-->
+
+
+    </div>
