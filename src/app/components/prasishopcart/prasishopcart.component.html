@@ -26,9 +26,11 @@
 
 								<td class="product-price"><span class="price">$ {{tix.finalPrice}}</span></td>
 
-								<td class="product-quantity">
-									<div class="pro-qty d-inline-block mx-0">
+								<td class="">
+									<div class="d-inline-block mx-0">
+										<a (click)="inc()" class="dec qty-btn">+</a>
 										<input type="text" value="{{tix.cantidad}}">
+										<a (click)="dec()" class="dec qty-btn">-</a>
 									</div>
 								</td>
 
@@ -44,7 +46,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6 mb-20">
-				<div class="cart-coupon-area pb-30">
+			<!-- 	<div class="cart-coupon-area pb-30">
 					<div class="row align-items-center">
 						<div class="col-lg-12 mb-md-30 mb-sm-30">
 							<div class="Prasi-form coupon-form">
@@ -63,7 +65,7 @@
 						<div class="col-lg-6 text-left text-lg-right">
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="cart-calculation-area">
 					<h2 class="mb-40">Total</h2>
 					<table class="cart-calculation-table mb-30">
@@ -71,7 +73,7 @@
 							<th>SUBTOTAL</th>
 							<td class="subtotal">${{_uw.subTotal}}</td>
 						</tr>
-						<tr>
+				<!-- 		<tr>
 							<th>DESTINO</th>
 						</tr>
 						<tr>
@@ -84,7 +86,7 @@
 						<tr>
 							<th>COSTO POR ENVIO</th>
 							<td class="subtotal">$ {{this.envio}}</td>
-						</tr>
+						</tr> -->
 						<tr>
 							<th>TOTAL</th>
 							<td class="total">$ {{_uw.total}}</td>

@@ -43,7 +43,7 @@ const app_routes: Routes = [
 	{path:'products',component:ProductsComponent},
 	{path:'footer',component:FooterComponent},
 	{path:'shop',component:ShopComponent},
-	{path:'detail',component:DetailComponent},
+	{path:'detail/:id',component:DetailComponent},
 	{path:'cart',component:CartComponent},
 	{path:'pago',component:PagoComponent},
 	{path:'blog',component:BlogComponent},

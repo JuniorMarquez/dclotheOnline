@@ -652,8 +652,8 @@
 
 	/*----------   Quantity Counter  ----------*/
 
-	$('.pro-qty').append('<a href="#" class="inc qty-btn">+</a>');
-	$('.pro-qty').prepend('<a href="#" class= "dec qty-btn">-</a>');
+	$('.pro-qty').append('<a (click)="inc()" class="inc qty-btn">+</a>');
+	$('.pro-qty').prepend('<a (click)="dec()" class= "dec qty-btn">-</a>');
 	$('.qty-btn').on('click', function (e) {
 		e.preventDefault();
 		var $button = $(this);

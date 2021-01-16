@@ -116,6 +116,7 @@ export class PrasiproductdetailComponent implements OnInit {
     } 
 
     ngOnInit() {
+
       if (this._uw.editingTrek){
         this.tix=this._uw.foredit;
       }  
@@ -142,6 +143,7 @@ export class PrasiproductdetailComponent implements OnInit {
       }
       this._uw.loaded=true;     
       this.getDetails(this.route.snapshot.paramMap.get('id'));
+
       if (this._uw.editingTrek){
         this.checkCategory(this._uw.foredit);
       }
@@ -155,10 +157,10 @@ export class PrasiproductdetailComponent implements OnInit {
       }
 
       if (tix.discount){
-        this.finalPrice=tix.price - (tix.price*tix.discount/100);  
+        this.finalPrice=tix.globalPrice - (tix.globalPrice*tix.discount/100);  
       }
       if (!tix.discount){
-        this.finalPrice=tix.price;  
+        this.finalPrice=tix.globalPrice;  
       }
       console.log("hola, entiendo que debo agregar "+this.ngFormAddToCar.value.cantidad +" pares del modelo: " +tix.productName+" para un total de: " +(this.ngFormAddToCar.value.cantidad*this.finalPrice));
   
@@ -208,23 +210,24 @@ export class PrasiproductdetailComponent implements OnInit {
       this._uw.errorFormAddtixs=false;
       this.tix = this.ngFormAddtixs.value;
       this.tix.status="activated";
-      if (this._uw.moccs){
-        this.tix.globalPrice=0;
-        this.tix.con=this.con;
-        this.tix.sin=this.sin;
-      }
-      if (this._uw.botas || this._uw.zapatos){
-        this.tix.price=this.tix.globalPrice;
-      }
-      if(this.tix.new){
-        this.tix.colection="new";
-      }
-      if (this.tix.category=="Botas y botines"){
-        this.tix.categoryFilter="Botas";
-      }
-      else{
-        this.tix.categoryFilter=this.tix.category;
-      }
+      // if (this._uw.moccs){
+      //   this.tix.globalPrice=0;
+      //   this.tix.con=this.con;
+      //   this.tix.sin=this.sin;
+      // }
+      // if (this._uw.botas || this._uw.zapatos){
+      //   this.tix.price=this.tix.globalPrice;
+      // }
+      // if(this.tix.new){
+      //   this.tix.colection="new";
+      // }
+      // if (this.tix.category=="Botas y botines"){
+      //   this.tix.categoryFilter="Botas";
+      // }
+      // else{
+      //   this.tix.categoryFilter=this.tix.category;
+      // }
+      this.tix.price=this.tix.globalPrice;
       this.tix.check=this.checks;
       this.tix.tallas=this.tallas;
       this.tix.images=this._uw.images;

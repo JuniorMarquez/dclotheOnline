@@ -70,10 +70,13 @@ setEnvio(){
 	}
 }
 remove(i){
-  console.log("indice a remover: "+i);
+  // console.log("indice a remover: "+i);
   this._uw.subTotal=this._uw.subTotal-(this._uw.car[i].cantidad*this._uw.car[i].finalPrice);
   this._uw.car.splice(i, 1);
   this._uw.numProd=this._uw.numProd-1;
+}
+public inc(){
+  console.log("ind");
 }
   ngOnInit() {
 
