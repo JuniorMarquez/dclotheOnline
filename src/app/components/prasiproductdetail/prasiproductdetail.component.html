@@ -87,24 +87,11 @@
 											<div class="shop-product__block shop-product__block--size mb-20">
 												<div class="shop-product__block__title">Talla: </div>
 												<div class="shop-product__block__value">
-													<div class="shop-product-size-list" *ngIf="tix">
-														<div *ngFor="let item of tix.tallas; let i=index;">
-															<div  [hidden]="!tix.check[i]" class="row">
-																<!-- <div class="col-md-1 col-xs-6">
-																	<ul class="amenities third"  [hidden]="i!=this.indiceTalla">
-																		<li></li>
-																	</ul>
-																	
-																</div> -->
-																<div class="col-md-12 col-xs-6" >
-																	
-																	<span class="single-size" style="font-size: 16px;" (click)="setSize(tix,i)">{{item}} 
-																	</span>	<i class="fa fa-check"  [hidden]="i!=this.indiceTalla"></i>
-																</div>
-															</div>
-														</div>
+													<div class="shop-product-color-list">
+														{{tix.talla}}
 													</div>
 												</div>
+											
 											</div>
 										
 											<div class="shop-product__block shop-product__block--color mb-40">
@@ -129,10 +116,10 @@
 												<a class="Prasi-button Prasi-button--medium" (click)="add(tix)" [hidden]="this._uw.isLogged">Agregar al carrito </a>
 												<div class="quick-view-other-info pb-0" style="border-top:0px;">
 													<table>
-														<tr class="single-info">
+														<!-- <tr class="single-info">
 															<td class="quickview-title">Codigo: </td>
 															<td class="quickview-value">{{tix.codigo}}</td>
-														</tr>
+														</tr> -->
 														<tr class="single-info">
 															<td class="quickview-title">Categoría: </td>
 															<td class="quickview-value">
@@ -140,13 +127,13 @@
 																
 															</td>
 														</tr>
-														<tr class="single-info">
+														<!-- <tr class="single-info">
 															<td class="quickview-title">Modelo: </td>
 															<td class="quickview-value">
 																<a >{{tix.modelo}}</a> 
 																
 															</td>
-														</tr>
+														</tr> -->
 													</table>
 												</div>
 											</div>
