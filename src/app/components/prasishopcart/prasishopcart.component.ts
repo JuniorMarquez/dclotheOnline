@@ -78,6 +78,9 @@ remove(i){
 public inc(){
   console.log("ind");
 }
+public dec(){
+  console.log("dec");
+}
   ngOnInit() {
 
         this.scrollTopService.setScrollTop();
