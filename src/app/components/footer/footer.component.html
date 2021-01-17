@@ -52,7 +52,7 @@
 	=            footer three         =
 	=============================================-->
 	
-	<div class="footer footer--three pt-90 pb-100">
+	<div class="footer footer--three pt-90 pb-100" [hidden]="router.url.includes('/prasiproductdetail') || router.url.includes('/blog') || router.url.includes('/prasifilter') ">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-9 col-md-12 footer-single-widget mb-md-50 mb-sm-50">
