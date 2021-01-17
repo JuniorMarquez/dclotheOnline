@@ -44,33 +44,33 @@
 											<div class="shop-product__title mb-15">
 												<h2>{{tix.productName}}</h2>
 											</div>
-											<div class="shop-product__price mb-30 " *ngIf="tix.category=='Moccs'">
+											<!-- <div class="shop-product__price mb-30 " *ngIf="tix.category=='Moccs'">
 												<span class="main-price discounted precioModificado" *ngIf="tix.discount && !tix.price" [hidden]="seted">$ {{tix.sin[0]}}</span>
 											
 												<span  class="discounted-price precioModificado" *ngIf="!tix.discount" [hidden]="seted"> Desde $ {{tix.sin[0]}}</span>
-											
+											mnjgb
 												<span  class="discounted-price precioModificado" *ngIf="tix.discount" [hidden]="seted"> Desde $ {{tix.sin[0] - (tix.discount * tix.sin[0]/100)}}</span>
 												
 												<span class="main-price discounted precioModificado" *ngIf="tix.discount && tix.price "  [hidden]="seted">$ {{tix.price}}</span >
 											
 												<span  class="discounted-price precioModificado" *ngIf="!tix.discount && tix.price" >$ {{tix.price}}</span>
 												<span class="discounted-price precioModificado" *ngIf="tix.discount && tix.price "  >${{tix.price - (tix.discount * tix.price/100)}}</span >
-											</div>
+											</div> -->
 
 
-											<div class="shop-product__price mb-30" *ngIf="tix.category!='Moccs'">
+											<div class="shop-product__price mb-30" >
 												
-												<span class="main-price discounted precioModificado" *ngIf="tix.discount && tix.price "  >$ {{tix.price}}</span >
+												<span class="main-price discounted precioModificado" *ngIf="tix.discount && tix.globalPrice "  >$ {{tix.globalPrice}}</span >
 
-												<span class="discounted-price precioModificado" *ngIf="tix.discount && tix.price "  >${{tix.price - (tix.price * tix.discount/100)}}</span >
-												<span class="discounted-price precioModificado" *ngIf="!tix.discount && tix.price "  >$ {{tix.price }}</span >
+												<span class="discounted-price precioModificado" *ngIf="tix.discount && tix.globalPrice "  >${{tix.globalPrice - (tix.globalPrice * tix.discount/100)}}</span >
+												<span class="discounted-price precioModificado" *ngIf="!tix.discount && tix.globalPrice "  >$ {{tix.globalPrice }}</span >
 											</div>
 
 
 											<div class="shop-product__short-desc mb-50">
 												{{tix.description}}
 											</div>
-											<div class="shop-product__block__value" *ngIf="tix.category=='Moccs'">
+											<!-- <div class="shop-product__block__value" *ngIf="tix.category=='Moccs'">
 												<div class="shop-product-size-list " >
 													<div class="sl-box">
 														<select class="form-control wide"   id="plants" placeholder="Tipo de planta" [(ngModel)]="plants" [ngModelOptions]="{standalone: true}"
@@ -81,10 +81,10 @@
 														</select>
 													</div>
 												</div>
-											</div>
+											</div> -->
 										
 										
-											<div class="shop-product__block shop-product__block--size mb-20">
+											<div class="shop-product__block shop-product__block--size mb-20" *ngIf="tix.talla">
 												<div class="shop-product__block__title">Talla: </div>
 												<div class="shop-product__block__value">
 													<div class="shop-product-color-list">
@@ -94,7 +94,7 @@
 											
 											</div>
 										
-											<div class="shop-product__block shop-product__block--color mb-40">
+											<div class="shop-product__block shop-product__block--color mb-40" *ngIf="tix.color">
 												<div class="shop-product__block__title">Color: </div>
 												<div class="shop-product__block__value">
 													<div class="shop-product-color-list">
@@ -116,10 +116,7 @@
 												<a class="Prasi-button Prasi-button--medium" (click)="add(tix)" [hidden]="this._uw.isLogged">Agregar al carrito </a>
 												<div class="quick-view-other-info pb-0" style="border-top:0px;">
 													<table>
-														<!-- <tr class="single-info">
-															<td class="quickview-title">Codigo: </td>
-															<td class="quickview-value">{{tix.codigo}}</td>
-														</tr> -->
+										
 														<tr class="single-info">
 															<td class="quickview-title">Categoría: </td>
 															<td class="quickview-value">
@@ -127,13 +124,7 @@
 																
 															</td>
 														</tr>
-														<!-- <tr class="single-info">
-															<td class="quickview-title">Modelo: </td>
-															<td class="quickview-value">
-																<a >{{tix.modelo}}</a> 
-																
-															</td>
-														</tr> -->
+													
 													</table>
 												</div>
 											</div>
@@ -171,7 +162,7 @@
 
 							<div class="col-md-8 col-xs-12" *ngIf="tix !== undefined" [hidden]="!this._uw.editingTrek"> 
 								<div class="Prasi-form login-form--register checkout-form">
-									<form  class=""[formGroup]="ngFormAddtixs" (ngSubmit) ="sendTix(tix.id)" >
+								<!-- 	<form  class=""[formGroup]="ngFormAddtixs" (ngSubmit) ="sendTix(tix.id)" >
 											
 											<aw-wizard [navBarLayout]="'large-empty-symbols'">
 												<aw-wizard-step stepTitle="">
@@ -415,7 +406,7 @@
 												    <button type="button" (click)="finish(tix.id)">Guardar</button>
 												  </aw-wizard-step>
 											</aw-wizard>
-									</form>							
+									</form>	 -->						
 								</div>	
 							</div>	
 						</div>
@@ -425,48 +416,5 @@
         </div>
     </div>
 </section>
-	<div class="overlay-navigation-menu overlay-navigation-inactive" id="overlay-navigation-menu">
-	   	<span class="close-icon overlay-menu-close-icon">
-	        <a href="javascript:void(0)" id="overlay-menu-close-icon">
-	            <i class="ti-close"></i>
-	        </a>
-	    </span>
-	  Hello
 
-
-	</div>
 	
-	<div class="wishlist-overlay" id="wishlist-overlay">
-		<div class="wishlist-overlay-close inactive"></div>
-		<div class="wishlist-overlay-content">
-	
-			<span class="close-icon" id="wishlist-close-icon">
-				<a href="javascript:void(0)">
-					<i class="ion-android-close"></i>
-				</a>
-			</span>
-			
-			
-			
-			<div class="offcanvas-cart-content-container">
-				<h3 class="cart-title">Alerta</h3>
-
-				<div class="cart-product-wrapper">
-					<div class="cart-product-container  ps-scroll">
-						Seguro que desea borrar este producto?
-					
-					</div>
-
-					<!--=======  cart buttons  =======-->
-					
-					<div class="cart-buttons">
-						<a (click)="setDeleted()">Si, deseo borralo</a>
-					</div>
-					
-					<!--=======  End of cart buttons  =======-->
-				</div>
-			</div>
-			
-			<!--=======  End of offcanvas wishlist content container   =======-->
-		</div>
-	</div>

@@ -1,4 +1,7 @@
-export { AddtixsComponent } from "./addtixs/addtixs.component";
+6y777777fg7777777777777777777777777777777Í2!
+FFFFFFF_+{  byooooooooooooooooooooooooooooooooooooooooooooooiipppppppppppppppppppppppppppppppppppppppppppppppppppppppiiiiiiiiiiiiippppyhou	ujyy
+Gf/t0nnnnnnnnnn-n/
+FRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEDFFFFFFFFFFFFrt45%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%W___%^^^^^^^^^^^^^^^^^^^^T%TTTTTTTT%%%%%%%%%%%%%%%%TTexport { AddtixsComponent } from "./addtixs/addtixs.component";
 export { TopbarComponent } from "./topbar/topbar.component";
 export { SliderComponent } from "./slider/slider.component";
 export { ProductsComponent } from "./products/products.component";
