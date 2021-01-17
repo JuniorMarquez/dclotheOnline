@@ -21,9 +21,9 @@ export class FooterComponent implements OnInit {
 
   constructor(
   	public scrollTopService:ScrollTopService,
-    private router: Router, 
+    public router: Router, 
     private dataApi: DataApiService,
-    private route:ActivatedRoute,
+    public route:ActivatedRoute,
     private location: Location,
     public _uw:UserWService
   	) { }
