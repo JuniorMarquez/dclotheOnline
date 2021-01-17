@@ -28,6 +28,7 @@ export interface TixInterface{
 	productName?:string;
 	sin?:Array<number>;
 	status?:string;
+	talla?:string;
 	tallas?:Array<string>;
 	temp?:string;
 	tips?:string;
