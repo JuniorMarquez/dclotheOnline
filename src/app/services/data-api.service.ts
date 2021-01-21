@@ -84,6 +84,12 @@ export class DataApiService {
 		this.tix = this.http.get(url_api);
 		return (this.tix);
 	}
+	getPostById(id:string){
+		let indice = id;
+		const url_api=`https://db.buckapi.com:3027/api/posts/${indice}`;
+		this.post = this.http.get(url_api);
+		return (this.post);
+	}
 	getCardById(id:string){
 		let indice = id;
 		const url_api=`https://db.buckapi.com:3027/api/card/${indice}`;

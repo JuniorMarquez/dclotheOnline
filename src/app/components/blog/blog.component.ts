@@ -28,7 +28,7 @@ public posts:PostInterface;
 getAllPosts(){
         this.dataApi.getAllPosts().subscribe((res:any) => {
       if (res[0] === undefined){
-        console.log("hey");
+        // console.log("hey");
        }else{
         this.posts=res;            
         }

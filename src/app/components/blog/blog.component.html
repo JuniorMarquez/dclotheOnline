@@ -6,7 +6,7 @@
                 <div class="col-lg-12 order-1">
                     <div class="row">
                         
-                        <div class="col-md-4 mb-60" *ngFor="let post of posts">
+                        <div class="col-md-4 mb-60" *ngFor="let post of posts" routerLink="/post/{{post.id}}">
                             <div class="single-slider-post">
                                 <!--=======  image  =======-->
                                 
@@ -23,37 +23,26 @@
                                 <div class="single-slider-post__content">
                                     <div class="post-date">
                                         <i class="ion-android-calendar"></i>
-                                        <a > dec 10, 2020</a>
+                                        <!-- <a > dec 10, 2020</a> -->
                                     </div>
                                     <h2 class="post-title"><a >{{post.tittle}}
                                     </a></h2>
-                                    <p class="post-excerpt">{{post.description  | slice:0:76}} ...</p>
+                                    <p class="post-excerpt">{{post.description  | slice:0:276}} ...</p>
                                     <a  class="blog-readmore-btn">leer mas</a>
-                                </div>
-                                
+                                </div>                                
                                 <!--=======  End of content  =======-->
                             </div>
-                        </div>
-
-                     
-
-                   
+                        </div>                
                     </div>
 
                     <div class="row">
                         <div class="col-lg-12">
                             <!--=======  pagination  =======-->
-                            
                             <div class="pagination text-center">
                                 <ul>
-                                    <li class="active"><a href="#">1</a></li>
-                                 <!--    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">NEXT</a></li> -->
+                                    <li class="active"><a >1</a></li>
                                 </ul>
-                            </div>
-                            
+                            </div>                            
                             <!--=======  End of pagination  =======-->
                         </div>
                     </div>

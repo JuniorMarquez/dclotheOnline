@@ -47,7 +47,7 @@ const app_routes: Routes = [
 	{path:'cart',component:CartComponent},
 	{path:'pago',component:PagoComponent},
 	{path:'blog',component:BlogComponent},
-	{path:'post',component:PostComponent},
+	{path:'post/:id',component:PostComponent},
 	{path:'admin',component:AdminComponent},
 	{path:'addtixs',component:AddtixsComponent },
 	{path:'mytixs',component:MyTixsComponent, canActivate:[AuthGuard]},

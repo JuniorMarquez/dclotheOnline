@@ -13,11 +13,11 @@ import { ValidationError } from '../../../assets/file-picker/src/lib/validation-
 
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  selector: 'app-postdetail',
+  templateUrl: './postdetail.component.html',
+  styleUrls: ['./postdetail.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostdetailComponent implements OnInit {
 
   constructor(
    public scrollTopService:ScrollTopService,
@@ -71,5 +71,4 @@ export class PostComponent implements OnInit {
 
    
   }
-
 }
