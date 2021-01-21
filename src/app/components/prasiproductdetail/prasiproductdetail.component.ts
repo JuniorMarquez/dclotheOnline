@@ -151,10 +151,10 @@ export class PrasiproductdetailComponent implements OnInit {
     } 
  
     public add(tix){
-      if ( !this.seted && tix.category=='Moccs' ){
-        tix.price=tix.sin[0];
-        this.seted=true;
-      }
+      // if ( !this.seted && tix.category=='Moccs' ){
+      //   tix.price=tix.sin[0];
+      //   this.seted=true;
+      // }
 
       if (tix.discount){
         this.finalPrice=tix.globalPrice - (tix.globalPrice*tix.discount/100);  
@@ -162,13 +162,14 @@ export class PrasiproductdetailComponent implements OnInit {
       if (!tix.discount){
         this.finalPrice=tix.globalPrice;  
       }
-      console.log("hola, entiendo que debo agregar "+this.ngFormAddToCar.value.cantidad +" pares del modelo: " +tix.productName+" para un total de: " +(this.ngFormAddToCar.value.cantidad*this.finalPrice));
+      // console.log("hola, entiendo que debo agregar "+this.ngFormAddToCar.value.cantidad +" pares del modelo: " +tix.productName+" para un total de: " +(this.ngFormAddToCar.value.cantidad*this.finalPrice));
   
         this.addp=tix;
         this.addp.cantidad=this.ngFormAddToCar.value.cantidad;
         this.addp.finalPrice=this.finalPrice;
         this._uw.car.push(this.addp);
         this._uw.subTotal=this._uw.subTotal+(this.ngFormAddToCar.value.cantidad*this.finalPrice);
+        this._uw.total=this._uw.subTotal;
         this._uw.numProd=this._uw.numProd+1;
         this.router.navigate(['/']);
     }
