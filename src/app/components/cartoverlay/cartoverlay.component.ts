@@ -7,21 +7,20 @@ import { Router } from '@angular/router';
 import { UserWService } from "../../services/user-w.service";
 
 @Component({
-  selector: 'app-prasicartoverlay',
-  templateUrl: './prasicartoverlay.component.html',
-  styleUrls: ['./prasicartoverlay.component.css']
+  selector: 'app-cartoverlay',
+  templateUrl: './cartoverlay.component.html',
+  styleUrls: ['./cartoverlay.component.css']
 })
-export class PrasicartoverlayComponent implements OnInit {
+export class CartoverlayComponent implements OnInit {
 
   constructor(
-  	private router: Router, 
+	private router: Router, 
     private dataApi: DataApiService,
     private route:ActivatedRoute,
     private location: Location,
     public _uw:UserWService
   	) { }
-
-remove(i){
+  remove(i){
   console.log("indice a remover: "+i);
   this._uw.subTotal=this._uw.subTotal-(this._uw.car[i].cantidad*this._uw.car[i].finalPrice);
   this._uw.car.splice(i, 1);
@@ -30,4 +29,6 @@ remove(i){
   ngOnInit() {
 
   }
+
+
 }

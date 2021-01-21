@@ -1,1 +1,71 @@
-<p>cart works!</p>
+<div class="shopping-cart-area mb-130">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 mb-30">
+				<div class="cart-table-container">
+					<table class="cart-table" style="border-right: 0px;border-left: 0px;">
+						<thead>
+							<tr>
+								<th class="product-name" colspan="2">Producto</th>
+								<th class="product-price">Precio</th>
+								<th class="product-quantity">Cantidad</th>
+								<th class="product-subtotal">Total</th>
+								<th class="product-remove">&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let tix of _uw.car;let i = index">
+								<td class="product-thumbnail">
+									<a >
+										<img src="{{tix.images[0]}}"  class="img-fluid" alt="">
+									</a>
+								</td>
+								<td class="product-name">
+									<a >{{tix.productName}}</a>
+								</td>
+
+								<td class="product-price"><span class="price">$ {{tix.finalPrice}}</span></td>
+
+								<td class="">
+									<div class="d-inline-block mx-0">
+										<!-- <a (click)="inc()" class="dec qty-btn">+</a> -->
+										<input type="text" value="{{tix.cantidad}}" style="width:59%; font-size:2rem; text-align:center" disabled="disabled">
+									<!-- 	<a (click)="dec()" class="dec qty-btn">-</a> -->
+									</div>
+								</td>
+
+								<td class="total-price"><span class="price">${{tix.finalPrice * tix.cantidad}}</span></td>
+								<td class="product-remove">
+									<a (click)="remove(i)">
+										<i class="ion-android-close"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-6 mb-20">
+
+				<div class="cart-calculation-area">
+					<h2 class="mb-40">Total</h2>
+					<table class="cart-calculation-table mb-30">
+						<tr>
+							<th>SUBTOTAL</th>
+							<td class="subtotal">${{_uw.subTotal}}</td>
+						</tr>
+		
+						<tr>
+							<th>TOTAL</th>
+							<td class="total">$ {{_uw.total}}</td>
+						</tr>
+					</table>
+					<div class="cart-calculation-button text-center">
+						<button class="Prasi-button Prasi-button--medium">Finalizar compra</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	

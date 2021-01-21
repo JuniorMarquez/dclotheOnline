@@ -39,31 +39,10 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
-
-
 import { AddtixsComponent } from './components/addtixs/addtixs.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MyTixsComponent } from './components/my-tixs/my-tixs.component';
 import { TestappComponent } from './components/testapp/testapp.component';
-import { PrasitopbarComponent } from './components/prasitopbar/prasitopbar.component';
-import { PrasisliderComponent } from './components/prasislider/prasislider.component';
-import { PrasicategorycarouselComponent } from './components/prasicategorycarousel/prasicategorycarousel.component';
-import { PrasiproductcatalogComponent } from './components/prasiproductcatalog/prasiproductcatalog.component';
-import { PrasiinstagramfeedComponent } from './components/prasiinstagramfeed/prasiinstagramfeed.component';
-import { PrasitopfooterComponent } from './components/prasitopfooter/prasitopfooter.component';
-import { PrasifooterComponent } from './components/prasifooter/prasifooter.component';
-import { PrasiaboutoverlayComponent } from './components/prasiaboutoverlay/prasiaboutoverlay.component';
-import { PrasicartoverlayComponent } from './components/prasicartoverlay/prasicartoverlay.component';
-import { PrasisearchoverlayComponent } from './components/prasisearchoverlay/prasisearchoverlay.component';
-import { PrasiproductdetailComponent } from './components/prasiproductdetail/prasiproductdetail.component';
-import { PrasicontactComponent } from './components/prasicontact/prasicontact.component';
-import { PrasiaboutComponent } from './components/prasiabout/prasiabout.component';
-import { PrasidevolucionesComponent } from './components/prasidevoluciones/prasidevoluciones.component';
-import { PrasifilterComponent } from './components/prasifilter/prasifilter.component';
-import { PrasishopcartComponent } from './components/prasishopcart/prasishopcart.component';
-import { PrasiconfirmationoverlayComponent } from './components/prasiconfirmationoverlay/prasiconfirmationoverlay.component';
-import { PrasidiscountComponent } from './components/prasidiscount/prasidiscount.component';
-import { DclothetopbarComponent } from './components/dclothetopbar/dclothetopbar.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { ProductsComponent } from './components/products/products.component';
@@ -74,6 +53,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { PostComponent } from './components/post/post.component';
+import { CartoverlayComponent } from './components/cartoverlay/cartoverlay.component';
 
 @NgModule({
   declarations: [
@@ -81,26 +61,7 @@ import { PostComponent } from './components/post/post.component';
     AddtixsComponent,
     AdminComponent,
     MyTixsComponent,
-    PrasitopbarComponent,
-    PrasisliderComponent,
-    PrasicategorycarouselComponent,
-    PrasiproductcatalogComponent,
-    PrasiinstagramfeedComponent,
-    PrasitopfooterComponent,
-    PrasifooterComponent,
-    PrasiaboutoverlayComponent,
-    PrasicartoverlayComponent,
-    PrasisearchoverlayComponent,
-    PrasiproductdetailComponent,
-    PrasicontactComponent,
-    PrasiaboutComponent,
-    PrasidevolucionesComponent,
-    PrasifilterComponent,
-    PrasishopcartComponent,
-    PrasiconfirmationoverlayComponent,
-    PrasidiscountComponent,
     TestappComponent,
-    DclothetopbarComponent,
     TopbarComponent,
     SliderComponent,
     ProductsComponent,
@@ -111,6 +72,7 @@ import { PostComponent } from './components/post/post.component';
     PagoComponent,
     BlogComponent,
     PostComponent,
+    CartoverlayComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrasisearchoverlayComponent } from './prasisearchoverlay.component';
+import { CartoverlayComponent } from './cartoverlay.component';
 
-describe('PrasisearchoverlayComponent', () => {
-  let component: PrasisearchoverlayComponent;
-  let fixture: ComponentFixture<PrasisearchoverlayComponent>;
+describe('CartoverlayComponent', () => {
+  let component: CartoverlayComponent;
+  let fixture: ComponentFixture<CartoverlayComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrasisearchoverlayComponent ]
+      declarations: [ CartoverlayComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrasisearchoverlayComponent);
+    fixture = TestBed.createComponent(CartoverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
