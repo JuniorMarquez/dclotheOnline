@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { ValidationError } from '../../../assets/file-picker/src/lib/validation-error.model';
-
+import { CategoryInterface } from '../../models/category-interface'; 
 
 
 @Component({
@@ -29,6 +29,7 @@ export class ShopComponent implements OnInit {
   	) { }
 
    public seted = false;
+   public categories:CategoryInterface;
     public tixs:TixInterface;
     loadAPI = null;
     url = "assets/assetsprasi/js/plugins.js";
@@ -40,7 +41,20 @@ export class ShopComponent implements OnInit {
       this._uw.images=tix.images;
       this.router.navigate(['/detail/'+tix.id]);
     }
+getAllCategories(){
+        this.dataApi.getAllCategories().subscribe((res:any) => {
+      if (res[0] === undefined){
+        // console.log("no");
+       }else{
+        this.categories=res;            
+        }
+     });  
+    }
+    
+    filter(category){
+      this.getTixsFilter(category);
 
+    }
     ngOnInit() {
       this._uw.editingTrek = false;
     	if (this._uw.loaded==true){
@@ -51,6 +65,7 @@ export class ShopComponent implements OnInit {
         }
         this._uw.loaded=true;
         this.getAllTixs();
+        this.getAllCategories();
     }
     getTixsFilter(catego: string){
       let categ = catego; 
@@ -113,8 +128,8 @@ export class ShopComponent implements OnInit {
         this.tixs=res;
         this._uw.tixsOrigin=res;  
          let ind =res.length;
-         this.filterDiscountIni(ind,res);       
-         this.filterNewIni(ind,res);     
+         // this.filterDiscountIni(ind,res);       
+         // this.filterNewIni(ind,res);     
         }
      });  
     }
